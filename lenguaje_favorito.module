@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains lenguaje_favorito.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function lenguaje_favorito_help($route_name, RouteMatchInterface $routeMatchInterface)
+{
+	switch ($route_name) {
+		case 'help.page.lenguaje_favorito':
+			$output = '';
+			$output .= '<h3>'. t('About') . '</h3>';
+			$output .= '<p>' . t('Acá puedes agregar tu lenguaje de programación favorito') . '</p>';
+			return $output;
+		
+		default;
+	}
+}
+function lenguaje_favorito_theme()
+{
+	return [
+		'lenguaje_favorito' => [
+			'variables' => [
+				'title' => '',
+				'lenguaje' => ''
+			],
+			'template' => 'lenguaje_favorito'
+		]
+	];
+}

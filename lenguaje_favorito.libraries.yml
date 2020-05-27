@@ -1,0 +1,10 @@
+#Aquí van las dependencias de css and js
+lenguaje_favorito:
+    version: 1.x
+    css:
+        theme: 
+          css/main.css: {}
+    js:
+        js/functions.js: {}
+    dependencies:
+        - core/jquery

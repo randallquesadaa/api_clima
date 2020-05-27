@@ -1,0 +1,6 @@
+lenguaje_favorito:
+  title: "Agregar lenguaje favorito"
+  route_name: lenguaje_favorito.configuration_form
+  description: "Configuracion del módulo lenguaje favorito"
+  parent: system.admin_config_system
+  weigth: 99
