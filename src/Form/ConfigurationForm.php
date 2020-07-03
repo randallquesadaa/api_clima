@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\lenguaje_favorito\Form;
+namespace Drupal\api_clima\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -13,7 +13,7 @@ class ConfigurationForm extends ConfigFormBase
 	 */
 	public function getFormId()
 	{
-		return 'lenguaje_favorito.configuration_form';
+		return 'api_clima.configuration_form';
 	}
 
 	/**
@@ -23,15 +23,15 @@ class ConfigurationForm extends ConfigFormBase
 	{
 		$form = parent::buildForm($form, $form_state);
 
-		$config = $this->config('lenguaje_favorito.configuration');
+		$config = $this->config('api_clima.configuration');
 
 		// para agregar un nuevo elemento solo usamos el nombre del array y la llave
 
 		// https://api.drupal.org/api/drupal/elements/8.5.x
-		$form['lenguaje_favorito'] = [
+		$form['api_clima'] = [
 			'#type' => 'textfield',
-			'#title' => $this->t('Ingrese su lenguaje de programación favorito'),
-			'#default_value' => $config->get('lenguaje_favorito'),
+			'#title' => $this->t('Ingrese tu clima mientras preparanos una sorpresa'),
+			'#default_value' => $config->get('api_clima'),
 			'#size' => 64,
 			'#maxlength' => 64,
 		];
@@ -52,8 +52,8 @@ class ConfigurationForm extends ConfigFormBase
 	 */
 	public function submitForm(array &$form, FormStateInterface $form_state)
 	{
-		$this->config('lenguaje_favorito.configuration')
-			->set('lenguaje_favorito', $form_state->getValue('lenguaje_favorito'))
+		$this->config('api_clima.configuration')
+			->set('api_clima', $form_state->getValue('api_clima'))
 			->save();
 
 		return parent::submitForm($form, $form_state);
@@ -65,7 +65,7 @@ class ConfigurationForm extends ConfigFormBase
 	public function getEditableConfigNames()
 	{
 		return [
-			'lenguaje_favorito.configuration'
+			'api_clima.configuration'
 		];
 	}
 }

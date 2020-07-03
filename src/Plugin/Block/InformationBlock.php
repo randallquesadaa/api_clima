@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\lenguaje_favorito\Plugin\Block;
+namespace Drupal\api_clima\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Config\ConfigFactory;
@@ -15,7 +15,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  *
  * @Block(
  *   id = "information_block",
- *   admin_label = @Translation("Bloque de informacion del lenguaje favorito"),
+ *   admin_label = @Translation("Temperatura de Costa Rica"),
  * )
  */
 class InformationBlock extends BlockBase implements ContainerFactoryPluginInterface
@@ -57,12 +57,6 @@ class InformationBlock extends BlockBase implements ContainerFactoryPluginInterf
 		$plugin_id,
 		$plugin_definition
 	) {
-
-		// config.factory
-		// https://api.drupal.org/api/drupal/core%21lib%21Drupal%21Core%21Config%21ConfigFactory.php/class/ConfigFactory/
-
-		// current_user
-		// https://api.drupal.org/api/drupal/core%21core.services.yml/service/current_user/8.8.x
 		return new static(
 			$configuration,
 			$plugin_id,
@@ -76,15 +70,15 @@ class InformationBlock extends BlockBase implements ContainerFactoryPluginInterf
 	{
 		$build = [];
 
-		$config = $this->config_factory->get('lenguaje_favorito.configuration');
-
-		// $lenguaje= $config->get('lenguaje_favorito');
-
+		$config = $this->config_factory->get('api_clima.configuration');
 		$build['information_block'] = [
-			'#markup' => $this->t("Hola @user, tu lenguaje de programación favorito es: @lenguaje", [
-				'@user' => $this->current_user->getAccountName(),
-				'@lenguaje' => $config->get('lenguaje_favorito')
-			]),
+			'#prefix' => '<div class="card p-5 text-center mb-3" id="resultados">',
+			'#suffix' => '</div>',
+			'#attached' => [
+                'library' => [
+                    'api_clima/api_clima'
+                ]
+            ]
 		];
 
 		return $build;

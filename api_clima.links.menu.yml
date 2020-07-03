@@ -1,0 +1,6 @@
+api_clima:
+  title: "Ver clima de Costa Rica"
+  route_name: api_clima.configuration_form
+  description: "Configuracion del módulo api clima"
+  parent: system.admin_config_system
+  weigth: 99

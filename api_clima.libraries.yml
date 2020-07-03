@@ -1,5 +1,5 @@
 #Aquí van las dependencias de css and js
-lenguaje_favorito:
+api_clima:
     version: 1.x
     css:
         theme: 

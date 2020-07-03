@@ -1,0 +1,5 @@
+name: 'Api_Clima'
+type: module
+description: 'Modulo que consume una Api y así poder ver el clima de la región de Costa Rica'
+core: 8.x
+package: 'Custom'

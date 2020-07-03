@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Contains api_clima.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function api_clima_help($route_name, RouteMatchInterface $routeMatchInterface)
+{
+	switch ($route_name) {
+		case 'help.page.api_clima':
+			$output = '';
+			$output .= '<h3>'. t('About') . '</h3>';
+			$output .= '<p>' . t('Acá puedes ver como esta el clima de Costa Rica') . '</p>';
+			return $output;
+		
+		default;
+	}
+}
+function api_clima_theme()
+{
+	return [
+		'api_clima' => [
+			'variables' => [
+				'title' => '',
+				'clima' => ''
+			],
+			'template' => 'api_clima'
+		]
+	];
+}

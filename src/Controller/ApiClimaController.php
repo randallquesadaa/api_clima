@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\lenguaje_favorito\Controller;
+namespace Drupal\api_clima\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Config\ConfigFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class LenguajeFavoritoController extends ControllerBase {
+class ApiClimaController extends ControllerBase {
 	/*Inyección de dependencias, esto se hace cuando se puede llamar el constructor, se importa el controllerBase
 	para poder acceder al metodo create y a partir de este podemos inyectar las dependencias, y podes acceder los
 	accesos que necesitamos.*/
@@ -17,7 +17,6 @@ class LenguajeFavoritoController extends ControllerBase {
 	public function __construct(
 		ConfigFactory $config_factory
 	){
-		//parent::__construct();
 		$this->config_factory = $config_factory;
 	}
 	public static function create(
@@ -34,15 +33,14 @@ class LenguajeFavoritoController extends ControllerBase {
 	 */
 	public function index()
 	{
-		$config = $this->config_factory->get('lenguaje_favorito.configuration');
-		//$lenguaje = 'JS';
+		$config = $this->config_factory->get('api_clima.configuration');
 		return [
-			'#theme' => 'lenguaje_favorito',
-            '#title' => 'Aqui esta tu lenguaje favorito',
-            '#lenguaje' => $config->get('lenguaje_favorito'),
+			'#theme' => 'api_clima',
+            '#title' => 'Aqui esta tu clima wey',
+            '#clima' => $config->get('api_clima'),
 			'#attached' => [
 				'library' => [
-					'lenguaje_favorito/lenguaje_favorito',
+					'api_clima/api_clima',
 				]
 			]
 		];   

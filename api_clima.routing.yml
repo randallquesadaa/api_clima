@@ -1,0 +1,17 @@
+api_clima.api_clima_controller:
+    path: "/api_clima"
+    defaults:
+        _controller: '\Drupal\api_clima\Controller\ApiClimaController::index'
+        _title: "Api Clima"
+    requirements:
+        _permission: "access content"
+
+api_clima.configuration_form:
+    path: "/admin/config/api_clima/configuration"
+    defaults:
+        _form: '\Drupal\api_clima\Form\ConfigurationForm'
+        _title: "Formulario de configuracion"
+    requirements:
+        _permission: "access api_clima configuration"
+    options:
+        _admin_route: true
